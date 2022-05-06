@@ -1,0 +1,21 @@
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+  - name: configure git
+    before: |
+      git config --global alias.co checkout
+      git config --global alias.br branch
+      git config --global alias.ci commit
+      git config --global alias.st status
+
+  # - name: Build Docker image
+  #   init: docker build -t gitpod-sample-app:preview .
+  
+  - name: start preview
+    command: |
+      docker build -t gitpod-sample-app:preview .
+      docker run gitpod-sample-app:preview
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 3000
+    onOpen: open-preview
